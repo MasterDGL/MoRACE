@@ -78,13 +78,3 @@ Recommended conservative wording:
 "All rule-based and molecular-feature baselines were evaluated on fixed pre-materialized train/validation/test CSV splits. The split files are recorded by SHA256 hashes in the split manifest."
 
 Avoid saying "confirmed scaffold split" unless the original split-generation code and seed are recovered and independently verified.
-
-## Boundary Confirmation
-
-- No source code was modified.
-- No GPU job was run.
-- No model was trained.
-- No split was regenerated.
-- No artifacts were modified.
-- Existing split CSV files were not modified.
-- Existing reports were not modified; this step added new manifest files only.
