@@ -1,0 +1,20 @@
+include requirements*.txt
+include .python-version
+include .gitignore
+include .gitattributes
+include pytest.ini
+include conftest.py
+include CONTRIBUTING.md
+include data/README.md
+include reports/README.md
+recursive-include configs *.json
+recursive-include data/splits *.csv
+recursive-include data/manifests *.csv *.md
+recursive-include scripts *.py *.sh
+recursive-include docs *.md
+recursive-include docs/assets *.png
+recursive-include examples *.py *.json
+recursive-include tests *.py
+recursive-include tests/fixtures *.json
+recursive-include .github *.yml
+global-exclude __pycache__ *.py[cod]

@@ -1,0 +1,138 @@
+{
+  "protocol": "MoRACE paper experiment",
+  "checkpoint_manifest": "configs/checkpoint_manifest.json",
+  "datasets": [
+    "bace",
+    "bbbp",
+    "clintox",
+    "esol",
+    "freesolv",
+    "hiv",
+    "lipophilicity"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "common_environment": {
+    "DRAFTS_PER_PROMPT": "1",
+    "SYN_DRAFTS_PER_PROMPT": "3",
+    "INF_DRAFTS_PER_PROMPT": "3",
+    "LATE_SELECTION_KEEP_TOPK": "2",
+    "LATE_SELECTION_MAX_SCORE_DELTA": "0.30",
+    "LATE_SELECTION_MAX_SURVIVORS_PER_PROMPT": "2",
+    "LATE_SELECTION_REQUIRE_NOVELTY": "1",
+    "TARGET_RULE_COUNT": "30",
+    "MAX_SAMPLES_PER_CHUNK": "0",
+    "PROJECTOR_MAX_NEW_TOKENS": "192",
+    "PROJECTOR_MAX_PROMPT_TOKENS": "1280",
+    "LIST_NUM": "30",
+    "QM9_LIST_NUM": "50",
+    "SYN_MAX_NEW_TOKENS": "512",
+    "INF_MAX_NEW_TOKENS": "512",
+    "STAGE1_TEMPERATURE": "0.45",
+    "STAGE2_TEMPERATURE": "0.0",
+    "STAGE1_TOP_P": "0.92",
+    "STAGE2_TOP_P": "1.0",
+    "USE_CROSS_MODEL_PROJECTOR": "0",
+    "ALL_FINALIST_ENABLE": "0",
+    "MULTI_CONSENSUS_PROMOTION_ENABLE": "0"
+  },
+  "routes": [
+    {
+      "id": "gemma_native_clean",
+      "label": "Gemma native-clean",
+      "historical_label": "Gemma guard",
+      "model": "gemma-4-e4b-it",
+      "model_path_env": "MORACE_MODEL_PATH_GEMMA_4_E4B_IT",
+      "python_path_env": "MORACE_PYTHON_GEMMA_NATIVE_CLEAN",
+      "environment": {
+        "STAGE2_PROTOCOL_PROFILE": "gemma_native",
+        "STAGE2_EXTRACTION_POLICY": "strict_only",
+        "STAGE2_CANONICALIZATION_POLICY": "strict_canonical_only",
+        "STAGE2_FAMILY_FEATURE_POLICY": "strict_family",
+        "STAGE2_FAMILY_TARGET_POLICY": "none",
+        "STAGE2_TARGET_VOCAB_POLICY": "none",
+        "STAGE2_TARGET_THINNING_POLICY": "none"
+      }
+    },
+    {
+      "id": "llama31_native_clean",
+      "label": "Llama3.1 native-clean",
+      "historical_label": "Llama3.1 guard",
+      "model": "llama-3.1-8b-instruct",
+      "model_path_env": "MORACE_MODEL_PATH_LLAMA_31_8B_INSTRUCT",
+      "python_path_env": "MORACE_PYTHON_LLAMA31_NATIVE_CLEAN",
+      "environment": {
+        "STAGE2_PROTOCOL_PROFILE": "chat_native_core",
+        "STAGE2_EXTRACTION_POLICY": "tolerant_first_json_object",
+        "STAGE2_CANONICALIZATION_POLICY": "strict_canonical_only",
+        "STAGE2_FAMILY_FEATURE_POLICY": "strict_family",
+        "STAGE2_FAMILY_TARGET_POLICY": "family_targeted_single_rule_variants",
+        "STAGE2_FAMILY_TARGETS": "pattern_presence,count",
+        "STAGE2_TARGET_VOCAB_POLICY": "micro_canonical_options",
+        "STAGE2_TARGET_THINNING_POLICY": "first_valid_target_rule",
+        "STAGE2_TERMINATION_POLICY": "pure_json_single_rule",
+        "STAGE2_RULE_COUNT_POLICY": "single_rule"
+      }
+    },
+    {
+      "id": "qwen_legacy",
+      "label": "Qwen legacy / D2R",
+      "historical_label": "Qwen legacy",
+      "model": "qwen3.5-9b",
+      "model_path_env": "MORACE_MODEL_PATH_QWEN35_9B",
+      "python_path_env": "MORACE_PYTHON_QWEN_LEGACY",
+      "environment": {
+        "STAGE2_PROTOCOL_PROFILE": "qwen_legacy_d2",
+        "STAGE2_EXTRACTION_POLICY": "strict_only",
+        "STAGE2_CANONICALIZATION_POLICY": "strict_canonical_only",
+        "STAGE2_FAMILY_FEATURE_POLICY": "strict_family",
+        "STAGE2_FAMILY_TARGET_POLICY": "none",
+        "STAGE2_TARGET_VOCAB_POLICY": "none",
+        "STAGE2_TARGET_THINNING_POLICY": "none"
+      }
+    },
+    {
+      "id": "deepseek_d52",
+      "label": "DeepSeek D5.2 target-thinning",
+      "historical_label": "DeepSeek D5.2",
+      "model": "deepseek-llm-7b-chat",
+      "checkpoint_manifest_model": "deepseek-llm-7b-chat-safetensors",
+      "model_path_env": "MORACE_MODEL_PATH_DEEPSEEK_LLM_7B_CHAT",
+      "python_path_env": "MORACE_PYTHON_DEEPSEEK_D52",
+      "environment": {
+        "STAGE2_PROTOCOL_PROFILE": "chat_native_core",
+        "STAGE2_EXTRACTION_POLICY": "tolerant_first_json_object",
+        "STAGE2_CANONICALIZATION_POLICY": "strict_canonical_only",
+        "STAGE2_FAMILY_FEATURE_POLICY": "strict_family",
+        "STAGE2_FAMILY_TARGET_POLICY": "family_targeted_single_rule_variants",
+        "STAGE2_FAMILY_TARGETS": "pattern_presence,count",
+        "STAGE2_TARGET_VOCAB_POLICY": "micro_canonical_options",
+        "STAGE2_TARGET_THINNING_POLICY": "first_valid_target_rule",
+        "STAGE2_TERMINATION_POLICY": "pure_json_single_rule",
+        "STAGE2_RULE_COUNT_POLICY": "single_rule"
+      }
+    },
+    {
+      "id": "chemdfm_b3",
+      "label": "ChemDFM B3 targeted",
+      "historical_label": "ChemDFM B3",
+      "model": "chemdfm-v1.5-8b",
+      "model_path_env": "MORACE_MODEL_PATH_CHEMDFM_V15_8B",
+      "python_path_env": "MORACE_PYTHON_CHEMDFM_B3",
+      "environment": {
+        "STAGE2_PROTOCOL_PROFILE": "chemdfm_native",
+        "STAGE2_EXTRACTION_POLICY": "tolerant_first_json_object",
+        "STAGE2_CANONICALIZATION_POLICY": "safe_enum_feature_canonicalization",
+        "STAGE2_FAMILY_FEATURE_POLICY": "safe_family_feature_consistency",
+        "STAGE2_FAMILY_TARGET_POLICY": "family_targeted_single_rule_variants",
+        "STAGE2_FAMILY_TARGETS": "pattern_presence,count",
+        "STAGE2_TARGET_VOCAB_POLICY": "micro_canonical_options",
+        "STAGE2_TARGET_THINNING_POLICY": "first_valid_target_rule"
+      }
+    }
+  ],
+  "configuration_version": "effective_run_config_v1"
+}

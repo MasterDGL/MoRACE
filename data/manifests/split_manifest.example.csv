@@ -1,0 +1,4 @@
+dataset,split_name,split_file_path,row_count,column_count,columns,smiles_column,target_column,file_sha256,ordered_smiles_sha256,ordered_smiles_target_sha256,first_3_smiles,last_3_smiles,has_missing_smiles,has_missing_target,duplicate_smiles_count,notes
+bbbp,train,data/splits/bbbp/bbbp_train.csv,0,2,smiles|p_np,smiles,p_np,,,,,false,false,0,replace row_count and hashes with values for your local split
+bbbp,valid,data/splits/bbbp/bbbp_valid.csv,0,2,smiles|p_np,smiles,p_np,,,,,false,false,0,replace row_count and hashes with values for your local split
+bbbp,test,data/splits/bbbp/bbbp_test.csv,0,2,smiles|p_np,smiles,p_np,,,,,false,false,0,replace row_count and hashes with values for your local split

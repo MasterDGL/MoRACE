@@ -1,0 +1,8 @@
+{
+  "description": "Hand-written supported rules for the CPU interface example; not LLM-generated research evidence.",
+  "rules": [
+    {"source": "data", "feature_family": "descriptor", "feature_name": "MolWt", "feature_mode": "numeric_value", "relation_to_target": "positive", "threshold": null, "rationale": "Demonstrate a registered continuous descriptor."},
+    {"source": "data", "feature_family": "descriptor", "feature_name": "TPSA", "feature_mode": "numeric_value", "relation_to_target": "negative", "threshold": null, "rationale": "Demonstrate a second registered descriptor."},
+    {"source": "data", "feature_family": "pattern_presence", "feature_name": "aromatic_ring", "feature_mode": "binary_presence", "relation_to_target": "positive", "threshold": null, "rationale": "Demonstrate a registered substructure indicator."}
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "provenance": "Captured from the pre-finalization source; CPU prompt/batch construction only.",
+  "source_sha256": {
+    "synthesis": "2fed17c57dbdc4c8238d853e8572338852d9eb2a0fd32e38f8e7f517dd4b6112",
+    "inference": "9d803593244b14b8f4fe9b94ea6b95cc8a05bb09dacfef0440b40b34e99285a3",
+    "rule_summary": "848a2186249d268bee410ea2ba172e5814397e0e55306240ddc5bcc011826ef0"
+  },
+  "cli_defaults": {
+    "synthesis": {
+      "dataset": "bbbp",
+      "subtask": "",
+      "model": "qwen3.5-9b",
+      "model_path": "",
+      "projector_model": "",
+      "projector_model_path": "",
+      "extra_draft_models": "",
+      "extra_draft_model_paths": "",
+      "drafts_per_prompt": 1,
+      "seed": 42,
+      "input_folder": "prompt_file",
+      "input_file": "synthesize_prompt.json",
+      "output_folder": "synthesize_model_response",
+      "max_new_tokens": 512,
+      "projector_max_new_tokens": 192,
+      "max_prompt_tokens": 1536,
+      "projector_max_prompt_tokens": 1792,
+      "stage1_temperature": 0.35,
+      "stage2_temperature": 0.0,
+      "stage1_top_p": 0.9,
+      "stage2_top_p": 0.9,
+      "stage1_num_beams": 1,
+      "stage2_num_beams": 1,
+      "run_tag": ""
+    },
+    "inference": {
+      "prompt_folder": "prompt_file",
+      "prompt_file": "inference_prompt.json",
+      "input_folder": "data/splits",
+      "output_folder": "inference_model_response",
+      "dataset": "bbbp",
+      "subtask": "",
+      "list_num": 30,
+      "max_samples_per_chunk": 0,
+      "seed": 42,
+      "model": "qwen3.5-9b",
+      "model_path": "",
+      "projector_model": "",
+      "projector_model_path": "",
+      "extra_draft_models": "",
+      "extra_draft_model_paths": "",
+      "drafts_per_prompt": 1,
+      "max_new_tokens": 768,
+      "projector_max_new_tokens": 768,
+      "max_prompt_tokens": 1200,
+      "projector_max_prompt_tokens": 1600,
+      "stage1_temperature": 0.45,
+      "stage2_temperature": 0.0,
+      "stage1_top_p": 0.92,
+      "stage2_top_p": 1.0,
+      "stage1_num_beams": 1,
+      "stage2_num_beams": 1,
+      "run_tag": ""
+    },
+    "rule_summary": {
+      "input_folder": "inference_model_response",
+      "input_model_folder": "qwen3.5-9b",
+      "dataset": "bbbp",
+      "subtask": "",
+      "list_num": 30,
+      "output_folder": "summarized_inference_rules",
+      "split_input_folder": "data/splits",
+      "target_rule_count": 30,
+      "run_tag": ""
+    }
+  },
+  "prompt_batches": [
+    {
+      "dataset": "bbbp",
+      "seed": 42,
+      "list_num": 3,
+      "max_samples_per_chunk": 8,
+      "mollogp_stability_cue_enabled": false,
+      "record_sha256": "50aa04eae946f92f1dcb1e541c774f33354a5282dbac6a6435d57a985877de91",
+      "batch_size": 8,
+      "task_type": "classification"
+    },
+    {
+      "dataset": "bbbp",
+      "seed": 1337,
+      "list_num": 2,
+      "max_samples_per_chunk": 8,
+      "mollogp_stability_cue_enabled": true,
+      "record_sha256": "678d9ecac6d0c3c9fe8e17bb1c9dd6f00859a49a19720d8dd5c0869f5711fa23",
+      "batch_size": 8,
+      "task_type": "classification"
+    },
+    {
+      "dataset": "freesolv",
+      "seed": 43,
+      "list_num": 3,
+      "max_samples_per_chunk": 8,
+      "mollogp_stability_cue_enabled": false,
+      "record_sha256": "1a6ddca7e4322cecdcaa86c0688e78386aae4e7139980272af011aecce83e406",
+      "batch_size": 8,
+      "task_type": "regression"
+    }
+  ]
+}
